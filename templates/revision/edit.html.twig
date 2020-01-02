@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Revision{% endblock %}
+
+{% block body %}
+    <h1>Edit Revision</h1>
+
+    {{ include('revision/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('revision_index') }}">back to list</a>
+
+    {{ include('revision/_delete_form.html.twig') }}
+{% endblock %}

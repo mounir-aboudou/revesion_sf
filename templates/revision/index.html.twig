@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Revision index{% endblock %}
+
+{% block body %}
+    <h1>Revision index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Contenu</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for revision in revisions %}
+            <tr>
+                <td>{{ revision.id }}</td>
+                <td>{{ revision.contenu }}</td>
+                <td>{{ revision.createdAt ? revision.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('revision_show', {'id': revision.id}) }}">show</a>
+                    <a href="{{ path('revision_edit', {'id': revision.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('revision_new') }}">Create new</a>
+{% endblock %}

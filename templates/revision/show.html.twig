@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Revision{% endblock %}
+
+{% block body %}
+    <h1>Revision</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ revision.id }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ revision.contenu }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ revision.createdAt ? revision.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('revision_index') }}">back to list</a>
+
+    <a href="{{ path('revision_edit', {'id': revision.id}) }}">edit</a>
+
+    {{ include('revision/_delete_form.html.twig') }}
+{% endblock %}
